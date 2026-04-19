@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Auto Research Cycle Output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "preflight",
+    "cycle_status",
+    "all_leaves_green",
+    "eligible_task_new_count",
+    "protected_nodes_touched_count",
+    "actions",
+    "notes",
+    "updated_node_ids",
+    "protected_nodes_skipped",
+    "waiting_decision",
+    "hypothesis_strategy"
+  ],
+  "properties": {
+    "preflight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executed",
+        "pip_inventory_checked",
+        "skills_inventory_checked",
+        "mcp_inventory_checked",
+        "python_execution_verified",
+        "pip_install_capability_verified",
+        "installs_performed"
+      ],
+      "properties": {
+        "executed": {
+          "type": "boolean",
+          "const": true
+        },
+        "pip_inventory_checked": {
+          "type": "boolean",
+          "const": true
+        },
+        "skills_inventory_checked": {
+          "type": "boolean",
+          "const": true
+        },
+        "mcp_inventory_checked": {
+          "type": "boolean",
+          "const": true
+        },
+        "python_execution_verified": {
+          "type": "boolean"
+        },
+        "pip_install_capability_verified": {
+          "type": "boolean"
+        },
+        "installs_performed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cycle_status": {
+      "type": "string",
+      "enum": [
+        "progress_made",
+        "waiting_for_user",
+        "all_leaves_green",
+        "no_viable_branch",
+        "runtime_error"
+      ]
+    },
+    "all_leaves_green": {
+      "type": "boolean"
+    },
+    "eligible_task_new_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "protected_nodes_touched_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 0
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "updated_node_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "protected_nodes_skipped": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "waiting_decision": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "used_awaiting_user_input",
+        "is_strategic_blocker",
+        "blocker_question",
+        "why_not_autonomous"
+      ],
+      "properties": {
+        "used_awaiting_user_input": {
+          "type": "boolean"
+        },
+        "is_strategic_blocker": {
+          "type": "boolean"
+        },
+        "blocker_question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "why_not_autonomous": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "hypothesis_strategy": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "hypotheses_considered_count",
+        "parallel_branches_launched",
+        "merged_results"
+      ],
+      "properties": {
+        "hypotheses_considered_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "parallel_branches_launched": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "merged_results": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
