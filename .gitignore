@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+venv/
+
+# Runtime logs and artifacts
+artifacts/
+*.log
+*.jsonl
+
+# Local lock files
+*.lock
